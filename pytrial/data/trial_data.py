@@ -53,7 +53,7 @@ class TrialDatasetBase(Dataset):
     def _get_ec_emb(self):
         # create EC embedding with indexed ECs
         from pytrial.model_utils.bert import BERT
-        bert_model = BERT(device='cuda:0')
+        bert_model = BERT(device='mps:0')
         self.inc_ec_embedding = bert_model.encode(self.inc_vocab.words, batch_size=64)
         self.exc_ec_embedding = bert_model.encode(self.exc_vocab.words, batch_size=64)
         self.inc_ec_embedding = self.inc_ec_embedding.cpu()
